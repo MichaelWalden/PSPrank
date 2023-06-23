@@ -32,33 +32,29 @@ Function Invoke-PSPrank
     param
     (
         [Parameter(Mandatory=$True,
-            HelpMessage='What Computer name would you like to target?')]
-        [Alias('Prank')]
-        [ValidateLength(3,30)]
-        [string[]]
-        $ComputerName
+            HelpMessage='What prank would you like to use?')]
+        #[Alias('Prank')]
+        [ValidateSet("RickRoll")]
+        [string]
+        $Prank
     )
 
-    BEGIN
-    {
+    BEGIN {
         Write-Verbose "Beginning $($MyInvocation.Mycommand)"
-        Write-Verbose "Deleting $Logname"
-        Remove-Item $LogName -ErrorActionSilentlyContinue
     }
-
-    PROCESS
-    {
-        Write-Verbose "Processing $($MyInvocation.Mycommand)"
-
-        ForEach ($Computer in $ComputerName) {
-            Write-Verbose "Processing $Computer"
-            IF ($pscmdlet.ShouldProcess($Computer)) {
-                # use $Computer here
+    PROCESS {
+        if ($PSCmdlet.ShouldProcess("$env:COMPUTERNAME","Invoke-PSPrank")) {
+            switch ($Prank) {
+                "RickRoll" {
+                    Invoke-RickRoll -confirm:$false
+                }
+                Default {
+                    throw "$Prank does not appear to be a supported prank."
+                }
             }
         }
     }
-    END
-    {
+    END {
         Write-Verbose "Ending $($MyInvocation.Mycommand)"
     }
 }
