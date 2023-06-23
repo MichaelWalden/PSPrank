@@ -2,25 +2,22 @@ Function Invoke-PSPrank
 {
 <#
     .SYNOPSIS
-        Describe the function here
+        This function runs a prank based on the parameters specified.
 
     .DESCRIPTION
-        Describe the function in more detail
+        Choose from a list of pranks to run and execute.
 
     .EXAMPLE
-        Give an example of how to use it
+        Invoke-PSPrank -Prank "RickRoll"
 
-    .EXAMPLE
-        Give another example of how to use it
-
-    .PARAMETER ComputerName
-        The Computer name to query. Just one.
+    .PARAMETER Prank
+        The prank to run. Choose from the following: RickRoll.
 
     .INPUTS
-        Input is from command line or called from a script.
+        Input is from command line or called from a scheduled task or script.
 
     .OUTPUTS
-        This will output the logfile.
+        Most pranks should not have any file or command line output.
 
     .NOTES
         Version: 0.1
@@ -32,7 +29,8 @@ Function Invoke-PSPrank
     param
     (
         [Parameter(Mandatory=$True,
-            HelpMessage='What prank would you like to use?')]
+            HelpMessage='What prank would you like to use?',
+            Position="0")]
         #[Alias('Prank')]
         [ValidateSet("RickRoll")]
         [string]
@@ -43,14 +41,14 @@ Function Invoke-PSPrank
         Write-Verbose "Beginning $($MyInvocation.Mycommand)"
     }
     PROCESS {
-        if ($PSCmdlet.ShouldProcess("$env:COMPUTERNAME","Invoke-PSPrank")) {
-            switch ($Prank) {
-                "RickRoll" {
-                    Invoke-RickRoll -confirm:$false
+        switch ($Prank) {
+            "RickRoll" {
+                if ($PSCmdlet.ShouldProcess("$env:COMPUTERNAME","Invoke-RickRoll")) {
+                    Invoke-RickRoll -Confirm:$False
                 }
-                Default {
-                    throw "$Prank does not appear to be a supported prank."
-                }
+            }
+            Default {
+                throw "$Prank does not appear to be a supported prank."
             }
         }
     }
