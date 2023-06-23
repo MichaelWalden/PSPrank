@@ -1,4 +1,4 @@
-# PSPranks
+# PSPrank
 
 ![Build Status](https://build.status.url.here)
 
@@ -10,14 +10,14 @@ Authored by Michael Waldenmaier
 
 ## Installing
 
-One day, the easiest way to get PSPranks might be using the [PowerShell Gallery](https://powershellgallery.com/packages/PSPranks/)!
+One day, the easiest way to get PSPrank might be using the [PowerShell Gallery](https://powershellgallery.com/packages/PSPranks/)!
 
 ### Inspecting the module
 
 Best practice is that you inspect modules prior to installing them. You can do this by saving the module to a local path:
 
 ``` PowerShell
-PS> Save-Module -Name PSPranks -Path <path>
+PS> Save-Module -Name PSPrank -Path <path>
 ```
 
 ### Installing the module
@@ -25,7 +25,7 @@ PS> Save-Module -Name PSPranks -Path <path>
 Once you trust a module, you can install it using:
 
 ``` PowerShell
-PS> Install-Module -Name PSPranks
+PS> Install-Module -Name PSPrank
 ```
 
 ### Updating PSPranks
@@ -33,7 +33,7 @@ PS> Install-Module -Name PSPranks
 Once installed from the PowerShell Gallery, you can update it using:
 
 ``` PowerShell
-PS> Update-Module -Name PSPranks
+PS> Update-Module -Name PSPrank
 ```
 
 ### Uninstalling PSPranks
@@ -41,12 +41,12 @@ PS> Update-Module -Name PSPranks
 To uninstall PSPranks:
 
 ``` PowerShell
-PS> Uninstall-Module -Name PSPranks
+PS> Uninstall-Module -Name PSPrank
 ```
 
-## Contributing to PSPranks
+## Contributing to PSPrank
 
-Interested in contributing? Read how you can [Contribute](contributing.md) to PSPranks
+Interested in contributing? Read how you can [Contribute](contributing.md) to PSPrank
 
 This project maintains a [Code of Conduct](code-of-conduct.md) that establishes how the project is governed and how everyone involved is expected to behave. You can report unacceptable behavior to [Developer@PowerShellis.Cool](mailto:Developer@PowerShellis.Cool).
 

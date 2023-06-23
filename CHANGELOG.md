@@ -1,4 +1,4 @@
-# PSPranks Release History
+# PSPrank Release History
 
 ## Version Number - Release Date
 
