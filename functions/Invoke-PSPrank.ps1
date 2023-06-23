@@ -10,8 +10,11 @@ Function Invoke-PSPrank
     .EXAMPLE
         Invoke-PSPrank -Prank "RickRoll"
 
+    .EXAMPLE
+        Invoke-PSPrank -Prank "Minimize"
+
     .PARAMETER Prank
-        The prank to run. Choose from the following: RickRoll.
+        The prank to run. Choose from the following: RickRoll, Minimize.
 
     .INPUTS
         Input is from command line or called from a scheduled task or script.
@@ -32,7 +35,7 @@ Function Invoke-PSPrank
             HelpMessage='What prank would you like to use?',
             Position="0")]
         #[Alias('Prank')]
-        [ValidateSet("RickRoll")]
+        [ValidateSet("RickRoll", "Minimize")]
         [string]
         $Prank
     )
@@ -45,6 +48,11 @@ Function Invoke-PSPrank
             "RickRoll" {
                 if ($PSCmdlet.ShouldProcess("$env:COMPUTERNAME","Invoke-RickRoll")) {
                     Invoke-RickRoll -Confirm:$False
+                }
+            }
+            "Minimize" {
+                if ($PSCmdlet.ShouldProcess("$env:COMPUTERNAME","Invoke-Minimizing")) {
+                    Invoke-Minimizing -Confirm:$False
                 }
             }
             Default {
