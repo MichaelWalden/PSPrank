@@ -4,7 +4,7 @@
 
 ## Description
 
-PowerShell pranks module.
+PowerShell pranks module. This module is a work in progress currently.
 
 Authored by Michael Waldenmaier
 
