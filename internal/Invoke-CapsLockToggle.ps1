@@ -1,4 +1,4 @@
-Function Invoke-Minimizing
+Function Invoke-CapsLockToggle
 {
 <#
     .NOTES
@@ -10,16 +10,16 @@ Function Invoke-Minimizing
     [CmdletBinding(SupportsShouldProcess=$True,ConfirmImpact='Low')]
     param(
         [Parameter(Mandatory=$False,
-            HelpMessage="How many times should all windows minimize?")]
+            HelpMessage="How many times should caps lock be toggled? (1-100)")]
         [ValidateRange(1, 100)]
         [int]
-        $Amount = "6",
+        $Amount = "5",
 
         [Parameter(Mandatory=$False,
-            HelpMessage="How often should all windows minimize (in seconds)?")]
+            HelpMessage="How often should caps lock be toggled (in seconds)? (1-1800)")]
         [ValidateRange(1, 1800)]
         [int]
-        $Interval = "30"
+        $Interval = "200"
     )
 
     BEGIN {
@@ -27,10 +27,10 @@ Function Invoke-Minimizing
         $Value = 0
     }
     PROCESS {
-        if ($PSCmdlet.ShouldProcess("All Windows", "Minimize every $Interval seconds, $Amount times.")) {
+        if ($PSCmdlet.ShouldProcess("Caps Lock", "Toggle every $Interval seconds, $Amount times.")) {
             # Sets the while loop to run until the $val variable's value reaches $Amount
             while($Value -ne $Amount) {
-                Set-MinimizeAll -Confirm:$False
+                Set-LockToggle -CapsLock -Confirm:$False
                 # Increment the $Value variable by 1
 	            $Value++
                 # Print the current value of the $val variable
